@@ -6,15 +6,16 @@ public class Book {
     private String author;
     private float price;
 
-    private Book(){
+    private Book() {}
 
-    }
+
     public Book(Builder builder) {
         this.isbn = builder.isbn;
         this.title = builder.title;
         this.author = builder.author;
         this.price = builder.price;
     }
+
 
     public String getTitle() {
         return title;
@@ -41,30 +42,35 @@ public class Book {
                 ", price=" + price +
                 '}';
     }
+
+    public static class Builder {
+        private String isbn;
+        private String title;
+        private String author;
+        private float price;
+
+
+        public Builder setIsbn(String isbn) {
+            this.isbn = isbn;
+            return this;
+        }
+
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder setAuthor(String author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder setPrice(float price) {
+            this.price = price;
+            return this;
+        }
+        public Book build() {
+            return new Book(this);
+        }
+    }
 }
-
-
-public static class Builder {
-    private String isbn;
-    private String title;
-    private String author;
-    private float price;
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-    public Book build() { return new Book(this);}
-}
-
