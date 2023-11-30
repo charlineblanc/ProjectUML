@@ -22,20 +22,6 @@ public class BookFactory {
                 .build();
     }
 
-    public static Book createBook(String title, String author, float price, String genre, int quantityAvailable) {
-        if (Helper.isNullorEmpty(title) ||Helper.isNullorEmpty(author))
-            return null;
-
-        if (price <= 0)
-            return null;
-
-        return new Book.Builder()
-                .setTitle(title)
-                .setAuthor(author)
-                .setPrice(price)
-                .setGenre(genre)
-                .setQuantityAvailable(quantityAvailable)
-                .build();
-    }
+}
 
 
