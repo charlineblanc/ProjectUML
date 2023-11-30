@@ -29,5 +29,30 @@ public class SubjectRepository implements ISubjectRepository{
     return subject;
 
     }
+    @Override
+    public Subject update(Subject newSubject){
+        Subject OldSubject = read(newSubject.getSubjectCode());
+        if (OldSubject == null)
+            return null;
+        boolean success = delete(newSubject.getSubjectCode());
+        if (success){
+            boolean successAdded = subjectDB.add(newSubject);
+            if (successAdded)
+                return newSubject;
+            else
+                return null;
+        }    
+        return null;
+    }
+
+    @Override
+    public boolean delete(String subjectCode){
+        Subject subjectToDelete = read(subjectCode);
+        boolean success = subjectDB.remove(subjectToDelete);
+        return success;
+    }
+
+    @Override
+    public List<Subject> getAll(){ return subjectDB;}
     
 }
