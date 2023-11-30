@@ -36,6 +36,6 @@ public class BookFactory {
                 .setGenre(genre)
                 .setQuantityAvailable(quantityAvailable)
                 .build();
-    }
+    }}
 
 
