@@ -1,11 +1,12 @@
 package efreiproject.factory;
 
 import efreiproject.domain.Book;
+import efreiproject.util.Helper;
 
 public class BookFactory {
 
     public static Book createBook(String isbn, String title, String author, float price, String genre, int quantityAvailable) {
-        if (isEmptyOrNull(isbn) || isEmptyOrNull(title) || isEmptyOrNull(author))
+        if (Helper.isNullorEmpty(isbn) || Helper.isNullorEmpty(title) || Helper.isNullorEmpty(author))
             return null;
 
         if (price <= 0)
@@ -22,7 +23,7 @@ public class BookFactory {
     }
 
     public static Book createBook(String title, String author, float price, String genre, int quantityAvailable) {
-        if (isEmptyOrNull(title) || isEmptyOrNull(author))
+        if (Helper.isNullorEmpty(title) ||Helper.isNullorEmpty(author))
             return null;
 
         if (price <= 0)
@@ -37,7 +38,4 @@ public class BookFactory {
                 .build();
     }
 
-    private static boolean isEmptyOrNull(String str) {
-        return str == null || str.trim().isEmpty();
-    }
-}
+
