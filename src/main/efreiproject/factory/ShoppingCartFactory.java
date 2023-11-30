@@ -2,17 +2,16 @@ package efreiproject.factory;
 
 import efreiproject.domain.ShoppingCart;
 
+
 public class ShoppingCartFactory {
     public static ShoppingCart createShoppingCart( List<Book> books) {
-        return new ShoppingCart();
+        if (books == null) {
+            return null;
 
-    }
-    public static ShoppingCart createShoppingCart( Book book) {
-        return new ShoppingCart();
+        return new ShoppingCart.Builder()
+                .setBooks()
+                .build();
 
-    }
-
-    private static boolean isEmptyOrNull(String str) {
-        return str == null || str.trim().isEmpty();
+        }
     }
 }

@@ -1,10 +1,11 @@
 package efreiproject.factory;
 
 import efreiproject.domain.Customers;
+import efreiproject.util.Helper;
 
 public static class CustomersFactory {
     public static Customers createCustomers( int cus_id, String name, String surname, int pointNumber) {
-        if (isEmptyOrNull(name) || isEmptyOrNull(surname))
+        if (Helper.isNullorEmpty(name) || Helper.isNullorEmpty(surname))
             return null;
 
         if (cus_id <= 0)
@@ -17,18 +18,5 @@ public static class CustomersFactory {
                 .setPointNumber(pointNumber)
                 .build();
     }
-    public static Customers createCustomers( String name, String surname, int pointNumber) {
-        if (isEmptyOrNull(name) || isEmptyOrNull(surname))
-            return null;
 
-        return new Customers.Builder()
-                .setName(name)
-                .setSurname(surname)
-                .setPointNumber(pointNumber)
-                .build();
-    }
-
-    private static boolean isEmptyOrNull(String str) {
-        return str == null || str.trim().isEmpty();
-    }
 }

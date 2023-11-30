@@ -1,17 +1,16 @@
 package efreiproject.factory;
 
 import efreiproject.domain.BookShop;
+import efreiproject.util.Helper;
 
 public class BookShopFactory {
-    public static BookShop createBookShop( int> bookInStock Map<Book) {
-        return new BookShop();
-    }
+    public static BookShop createBookShop(Map<Book,Integer> bookInStock) {
+        if (bookInStock==null){
+            return null;
 
-    public static BookShop createBookShop( Book book) {
-        return new BookShop();
-    }
-    private static boolean isEmptyOrNull(String str) {
-        return str == null || str.trim().isEmpty();
+        return new BookShop.Builder()
+                .setBookInStock()
+                .build();
+        }
     }
 }
-
